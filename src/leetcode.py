@@ -79,6 +79,7 @@ def find_largest_negative(xs, lo=0, hi=None):
     else:
         return None
 
+
 def find_smallest(xs, lo=0, hi=None):
     '''
     Assume that xs is a list of numbers that is strictly decreasing
@@ -112,6 +113,7 @@ def find_smallest(xs, lo=0, hi=None):
             right = mid
     return left
 
+
 def count_repeats(xs, x):
     '''
     Assume that xs is a list of numbers sorted from HIGHEST to LOWEST,
@@ -133,11 +135,13 @@ def count_repeats(xs, x):
     >>> count_repeats([3, 2, 1], 4)
     0
     '''
-    start = find_first_occurrence(xs,x)
-    end = find_last_occurrence(xs,x)
+
+    start = find_first_occurrence(xs , x)
+    end = find_last_occurrence(xs , x)
     return end - start
 
-def find_first_occurrence(xs,x):
+
+def find_first_occurrence(xs , x):
     left = 0
     right = len(xs)
     while left < right:
@@ -149,7 +153,7 @@ def find_first_occurrence(xs,x):
     return left
 
 
-def find_last_occurrence(xs,x):
+def find_last_occurrence(xs , x):
     left = 0
     right = len(xs)
     while left < right:

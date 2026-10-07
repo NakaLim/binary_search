@@ -7,6 +7,7 @@ The main function of this file is called argmin.
 It takes another function as a parameter, which might feel unusual to you.
 Consider the example quadratic function below:
 
+
 >>> def f(x):
 ...    return (x-5)**2
 
@@ -92,7 +93,6 @@ def bounded_argmin(f, lo, hi, epsilon=1e-3):
         Each recursive call shrinks the interval to length <= (2/3)*(hi-lo).
         After k calls, length <= (2/3)^k * (hi-lo).
         We stop when length < epsilon, so we set
-        
             (2/3)^k * (hi-lo) < epsilon
 
         then solve for k to get
@@ -117,6 +117,7 @@ def bounded_argmin(f, lo, hi, epsilon=1e-3):
         return bounded_argmin(f, lo, m2, epsilon)
     else:
         return bounded_argmin(f, m1, hi, epsilon)
+
 
 def find_boundaries(f, lo=-1, hi=1):
     '''
