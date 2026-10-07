@@ -136,12 +136,12 @@ def count_repeats(xs, x):
     0
     '''
 
-    start = find_first_occurrence(xs,x)
-    end = find_last_occurrence(xs,x)
+    start = find_first_occurrence(xs, x)
+    end = find_last_occurrence(xs, x)
     return end - start
 
 
-def find_first_occurrence(xs,x):
+def find_first_occurrence(xs, x):
     left = 0
     right = len(xs)
     while left < right:
@@ -153,7 +153,7 @@ def find_first_occurrence(xs,x):
     return left
 
 
-def find_last_occurrence(xs,x):
+def find_last_occurrence(xs, x):
     left = 0
     right = len(xs)
     while left < right:
