@@ -30,6 +30,20 @@ def find_smallest_positive(xs):
     >>> find_smallest_positive([-3, -2, -1]) is None
     True
     '''
+    if len(xs) == 0:
+        return None
+    left = 0
+    right = len(xs) - 1
+    while left != right:
+        mid = (left + right) // 2
+        if xs[mid] > 0:
+            right = mid
+        if xs[mid] <= 0:
+            left = mid + 1
+    if xs[left] > 0:
+        return left
+    else:
+        return None
 
 
 def find_largest_negative(xs, lo=0, hi=None):
@@ -50,7 +64,20 @@ def find_largest_negative(xs, lo=0, hi=None):
     >>> find_largest_negative([-3, -2, -1])
     2
     '''
-
+    if len(xs) == 0:
+        return None
+    left = lo
+    right = len(xs) - 1 if hi is None else hi
+    while left != right:
+        mid = (left + right + 1) // 2
+        if xs[mid] < 0:
+            left = mid
+        else:
+            right = mid - 1
+    if xs[left] < 0:
+        return left
+    else:
+        return None
 
 def find_smallest(xs, lo=0, hi=None):
     '''
@@ -73,7 +100,17 @@ def find_smallest(xs, lo=0, hi=None):
     >>> find_smallest([]) is None
     True
     '''
-
+    if len(xs) == 0:
+        return None
+    left = lo
+    right = len(xs) - 1 if hi is None else hi
+    while left != right:
+        mid = (left + right) // 2
+        if xs[mid] > xs[mid + 1]:
+            left = mid + 1
+        else:
+            right = mid
+    return left
 
 def count_repeats(xs, x):
     '''
@@ -96,3 +133,29 @@ def count_repeats(xs, x):
     >>> count_repeats([3, 2, 1], 4)
     0
     '''
+    start = find_first_occurrence(xs,x)
+    end = find_last_occurrence(xs,x)
+    return end - start
+
+def find_first_occurrence(xs,x):
+    left = 0
+    right = len(xs)
+    while left < right:
+        mid = (left + right) // 2
+        if xs[mid] <= x:
+            right = mid
+        else:
+            left = mid + 1
+    return left
+
+
+def find_last_occurrence(xs,x):
+    left = 0
+    right = len(xs)
+    while left < right:
+        mid = (left + right) // 2
+        if xs[mid] < x:
+            right = mid
+        else:
+            left = mid + 1
+    return left
